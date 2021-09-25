@@ -23,9 +23,9 @@ public class SggCodeGenerator {
         String projectPath = System.getProperty("user.dir")+"/mybatis-plus-sample-generator";
         System.out.println("项目路径"+projectPath);
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("zwq");
+        gc.setAuthor("zero");
         gc.setOpen(false); //生成后是否打开资源管理器
-        gc.setFileOverride(false); //重新生成时文件是否覆盖
+        gc.setFileOverride(true); //重新生成时文件是否覆盖
         gc.setServiceName("%sService"); //去掉Service接口的首字母I
         gc.setIdType(IdType.ID_WORKER_STR); //主键策略
         gc.setDateType(DateType.ONLY_DATE);//定义生成的实体类中日期类型
@@ -45,7 +45,7 @@ public class SggCodeGenerator {
         // 4、包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(null); //模块名
-        pc.setParent("cn.zwq.mybatis-plus");
+        pc.setParent("com.example.generator");
         pc.setController("controller");
         pc.setEntity("entity");
         pc.setService("service");
