@@ -37,6 +37,7 @@ class PagehelperTest {
         List<User> list = info.getList();
         assertThat(list).isNotEmpty();
         assertThat(list.size()).isEqualTo(1);
+        System.out.println(list);
     }
 
     @Test
@@ -56,5 +57,6 @@ class PagehelperTest {
         List<User> list = info.getList();
         assertThat(list).isNotEmpty();
         assertThat(list.size()).isEqualTo(2);
+        System.out.println(list);
     }
 }
