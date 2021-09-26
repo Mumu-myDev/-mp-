@@ -6,7 +6,4 @@ spring:
     username: root
     password: passworld
 
-# Logger Config
-logging:
-  level:
-    com.baomidou.mybatisplus.samples.quickstart: debug
+

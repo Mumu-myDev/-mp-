@@ -1,18 +1,5 @@
 package com.baomidou.mybatisplus.samples.pagination;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.apache.ibatis.session.RowBounds;
-import org.assertj.core.util.Maps;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.CollectionUtils;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -27,8 +14,18 @@ import com.baomidou.mybatisplus.samples.pagination.model.MyPage;
 import com.baomidou.mybatisplus.samples.pagination.model.ParamSome;
 import com.baomidou.mybatisplus.samples.pagination.model.UserChildren;
 import com.baomidou.mybatisplus.samples.pagination.service.IUserService;
-
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.session.RowBounds;
+import org.assertj.core.util.Maps;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.CollectionUtils;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author miemie
@@ -45,8 +42,11 @@ class PaginationTest {
     void lambdaPagination() {
         Page<User> page = new Page<>(1, 3);
         Page<User> result = mapper.selectPage(page, Wrappers.<User>lambdaQuery().ge(User::getAge, 1).orderByAsc(User::getAge));
-        assertThat(result.getTotal()).isGreaterThan(3);
+        assertThat(result.getTotal()).isGreaterThan(2);
         assertThat(result.getRecords().size()).isEqualTo(3);
+        String json = JSON.toJSONString(page);
+        System.out.println(json);
+
     }
 
     @Test
@@ -106,7 +106,8 @@ class PaginationTest {
 
     @Test
     void testMyPageMap() {
-        MyPage<User> myPage = new MyPage<User>(1, 5).setSelectInt(20).setSelectStr("Jack");
+        MyPage<User> myPage = new MyPage<User>(1, 3).setSelectInt(20).setSelectStr("Jack");
+        System.out.println(JSON.toJSON(myPage));
         mapper.mySelectPageMap(myPage, Maps.newHashMap("name", "%a"));
         myPage.getRecords().forEach(System.out::println);
     }
