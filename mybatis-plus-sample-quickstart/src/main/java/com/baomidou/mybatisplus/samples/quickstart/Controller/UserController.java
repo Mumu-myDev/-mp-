@@ -24,6 +24,14 @@ public class UserController {
         return userService.getById(id);
     }
 
+    @PutMapping("/{id}")
+    public void add(@PathVariable(name = "id") Integer id) {
+//        User user=new User(7,);
+//        userService.save();
+        System.out.println(id);
+
+    }
+
 
 
 
