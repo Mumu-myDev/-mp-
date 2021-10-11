@@ -5,12 +5,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.samples.crud.entity.ProductCategory;
 import com.baomidou.mybatisplus.samples.crud.entity.User;
 import com.baomidou.mybatisplus.samples.crud.entity.User2;
+import com.baomidou.mybatisplus.samples.crud.mapper.ProductCategoryMapper;
 import com.baomidou.mybatisplus.samples.crud.mapper.User2Mapper;
 import com.baomidou.mybatisplus.samples.crud.mapper.UserMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
@@ -33,24 +36,36 @@ public class CrudTest {
     private UserMapper mapper;
     @Resource
     private User2Mapper user2Mapper;
+    @Autowired
+    private ProductCategoryMapper productCategoryMapper;
+
+    @Test
+    public void testInstert(){
+
+        ProductCategory productCategory = new ProductCategory();
+        productCategory.setName("sss");
+        productCategoryMapper.insert(productCategory);
+    }
 
     @Test
     public void aInsert() {
         User user = new User();
+//        user.setId(67L);
         user.setName("小羊");
         user.setAge(3);
         user.setEmail("abc@mp.com");
-        assertThat(mapper.insert(user)).isGreaterThan(0);
-        // 成功直接拿回写的 ID
-        assertThat(user.getId()).isNotNull();
+        mapper.insert(user);
+//        assertThat(mapper.insert(user)).isGreaterThan(0);
+//        // 成功直接拿回写的 ID
+//        assertThat(user.getId()).isNotNull();
     }
 
 
     @Test
     public void bDelete() {
-        assertThat(mapper.deleteById(3L)).isGreaterThan(0);
+        assertThat(mapper.deleteById(73L)).isGreaterThan(0);
         assertThat(mapper.delete(new QueryWrapper<User>()
-                .lambda().eq(User::getName, "Sandy"))).isGreaterThan(0);
+                .lambda().eq(User::getName, "miemie"))).isGreaterThan(0);
     }
 
 
@@ -128,14 +143,21 @@ public class CrudTest {
 
     @Test
     public void orderBy() {
+        System.out.println("-------------------------------------------------------------------------------------------------------------------");
         List<User> users = mapper.selectList(Wrappers.<User>query().orderByAsc("age"));
+        users.forEach(System.out::println);
+        System.out.println("---------------------------------------------------------------------------------------------------");
         assertThat(users).isNotEmpty();
         //多字段排序
         List<User> users2 = mapper.selectList(Wrappers.<User>query().orderByAsc("age", "name"));
+        users2.forEach(System.out::println);
         assertThat(users2).isNotEmpty();
+        System.out.println("---------------------------------------------------------------------------------------------------");
         //先按age升序排列，age相同再按name降序排列
         List<User> users3 = mapper.selectList(Wrappers.<User>query().orderByAsc("age").orderByDesc("name"));
+        users3.forEach(System.out::println);
         assertThat(users3).isNotEmpty();
+        System.out.println("---------------------------------------------------------------------------------------------------");
     }
 
     @Test
@@ -201,21 +223,23 @@ public class CrudTest {
     @Test
     public void testTableFieldExistFalse() {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
+//        wrapper.select()
         wrapper.select("age, count(age) as count")
                 .groupBy("age");
         List<User> list = mapper.selectList(wrapper);
         list.forEach(System.out::println);
+
         list.forEach(x -> {
             Assertions.assertNull(x.getId());
             Assertions.assertNotNull(x.getAge());
             Assertions.assertNotNull(x.getCount());
         });
         mapper.insert(
-                new User().setId(10088L)
+                new User()
                         .setName("miemie")
                         .setEmail("miemie@baomidou.com")
                         .setAge(3));
-        User miemie = mapper.selectById(10088L);
+        User miemie = mapper.selectById(75L);
         Assertions.assertNotNull(miemie);
 
     }

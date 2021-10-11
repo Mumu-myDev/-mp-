@@ -33,6 +33,7 @@ public class InjectorTest {
             ids.add(student.getId());
         }
         log.error("--------------------------------------insertBatchSomeColumn-------------------------------------------------------");
+        //优先使用下面的，sql一次执行完成。
         List<Student> ss = Lists.newArrayList();
         for (int i = 2; i < 20; i++) {
             Student student = new Student("小明" + i + "号", i);

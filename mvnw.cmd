@@ -21,9 +21,7 @@
 @REM Maven2 Start Up Batch script
 @REM
 @REM Required ENV vars:
-@REM JAVA_HOME - location of a JDK home dir
-@REM
-@REM Optional ENV vars
+@REM JAVA_HOME - locat
 @REM M2_HOME - location of maven2's installed home dir
 @REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
 @REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a key stroke before ending
@@ -52,7 +50,7 @@ if exist "%HOME%\mavenrc_pre.cmd" call "%HOME%\mavenrc_pre.cmd"
 
 set ERROR_CODE=0
 
-@REM To isolate internal variables from possible post scripts, we use another setlocal
+@REM To isolate internal variables from possible post scripts, w use another setlocal
 @setlocal
 
 @REM ==== START VALIDATION ====

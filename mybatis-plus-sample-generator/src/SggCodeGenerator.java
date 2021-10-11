@@ -1,5 +1,3 @@
-package com.example.mybatisplussamplegenerator;
-
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -60,10 +58,8 @@ public class SggCodeGenerator {
 
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);//数据库表字段映射到实体的命名策略
         strategy.setEntityLombokModel(true); // lombok 模型 @Accessors(chain = true) setter链式操作
-
         strategy.setRestControllerStyle(true); //restful api风格控制器
         strategy.setControllerMappingHyphenStyle(true); //url中驼峰转连字符
-
         mpg.setStrategy(strategy);
 
         // 6、执行

@@ -24,17 +24,17 @@ public class UserController {
         return userService.getById(id);
     }
 
+    /***
+     *
+     * @param id
+     * @return
+     */
     @PutMapping("/{id}")
-    public void add(@PathVariable(name = "id") Integer id) {
-//        User user=new User(7,);
-//        userService.save();
+    public Integer add(@PathVariable(name = "id") Integer id) {
+        User user = new User();
         System.out.println(id);
-
+        return 0;
     }
-
-
-
-
 
 
 }
