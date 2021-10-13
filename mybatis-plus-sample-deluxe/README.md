@@ -68,7 +68,7 @@ public class MysqlInsertAllBatch extends AbstractMethod {
 演示批量保存使用mysql特有语法:
 
 ```text
-insert into user(id, name, age) values (1, "a", 17), (2,"b", 18)
+insert into userq(id, name, age) values (1, "a", 17), (2,"b", 18)
 ```
 
 > 坑点：

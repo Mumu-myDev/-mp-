@@ -1,7 +1,7 @@
 DELETE
-FROM user;
+FROM userq;
 
-INSERT INTO user (id, name)
+INSERT INTO userq (id, name)
 VALUES (1, 'Jone'),
        (2, 'Jack'),
        (3, 'Tom'),

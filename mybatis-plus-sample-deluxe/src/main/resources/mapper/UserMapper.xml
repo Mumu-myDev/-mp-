@@ -4,7 +4,7 @@
 
     <select id="selectUserPage" resultType="com.baomidou.mybatisplus.samples.deluxe.entity.User">
         select *
-        from user
+        from userq
         <trim prefix="where" prefixOverrides="AND">
             <if test="selectInt != null">
                 age = #{selectInt}
@@ -17,7 +17,7 @@
     </select>
     <!-- verify github #1532-->
     <select id="findList" parameterType="com.baomidou.mybatisplus.samples.deluxe.entity.User" resultType="com.baomidou.mybatisplus.samples.deluxe.entity.User">
-        select * from user where name like concat(concat('%', #{user.name}), '%')
+        select * from userq where name like concat(concat('%', #{userq.name}), '%')
     </select>
 
     <select id="customerSqlSegment" resultType="com.baomidou.mybatisplus.samples.deluxe.entity.User">

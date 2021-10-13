@@ -1,5 +1,12 @@
 # DataSource Config
 spring:
+#  datasource:
+#    driver-class-name: dm.jdbc.driver.DmDriver
+#    #    schema: classpath:db/schema-h2.sql
+#    #    data: classpath:db/data-h2.sql
+#    url: jdbc:dm://localhost:5236
+#    username: childrenchildren
+#    password: childrenchildren
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC

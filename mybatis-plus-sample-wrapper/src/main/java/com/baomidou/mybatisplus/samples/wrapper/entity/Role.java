@@ -1,5 +1,6 @@
 package com.baomidou.mybatisplus.samples.wrapper.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -7,6 +8,7 @@ import lombok.Data;
  * @since 2018-08-10
  */
 @Data
+@TableName(value="demo.roleq")
 public class Role {
     /**
      * 主键ID

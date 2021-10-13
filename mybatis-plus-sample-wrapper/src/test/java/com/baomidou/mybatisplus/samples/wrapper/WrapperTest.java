@@ -34,13 +34,13 @@ public class WrapperTest {
         Assertions.assertEquals(plainUsers.size(), lambdaUsers.size());
         print(plainUsers);
 
-        System.out.println("----- 带子查询(sql注入) ------");
-        List<User> plainUsers2 = userMapper.selectList(new QueryWrapper<User>()
-                .inSql("role_id", "select id from role where id = 2"));
-        List<User> lambdaUsers2 = userMapper.selectList(new QueryWrapper<User>().lambda()
-                .inSql(User::getRoleId, "select id from role where id = 2"));
-        Assertions.assertEquals(plainUsers2.size(), lambdaUsers2.size());
-        print(plainUsers2);
+//        System.out.println("----- 带子查询(sql注入) ------");
+//        List<User> plainUsers2 = userMapper.selectList(new QueryWrapper<User>()
+//                .inSql("role_id", "select id from role where id = 2"));
+//        List<User> lambdaUsers2 = userMapper.selectList(new QueryWrapper<User>().lambda()
+//                .inSql(User::getRoleId, "select id from role where id = 2"));
+//        Assertions.assertEquals(plainUsers2.size(), lambdaUsers2.size());
+//        print(plainUsers2);
 
         System.out.println("----- 带嵌套查询 ------");
         List<User> plainUsers3 = userMapper.selectList(new QueryWrapper<User>()
@@ -86,9 +86,9 @@ public class WrapperTest {
 
         System.out.println("----- 带子查询(sql注入) ------");
         List<User> plainUsers2 = userMapper.selectList(new LambdaQueryWrapper<User>()
-                .inSql(User::getRoleId, "select id from role where id = 2"));
+                .inSql(User::getRoleId, "select id from demo.roleq where id = 2"));
         List<User> lambdaUsers2 = userMapper.selectList(new QueryWrapper<User>().lambda()
-                .inSql(User::getRoleId, "select id from role where id = 2"));
+                .inSql(User::getRoleId, "select id from demo.roleq where id = 2"));
         Assertions.assertEquals(plainUsers2.size(), lambdaUsers2.size());
         print(plainUsers2);
 
@@ -102,10 +102,10 @@ public class WrapperTest {
         Assertions.assertEquals(plainUsers3.size(), lambdaUsers3.size());
         print(plainUsers3);
 
-        System.out.println("----- 自定义(sql注入) ------");
-        List<User> plainUsers4 = userMapper.selectList(new QueryWrapper<User>()
-                .apply("role_id = 2"));
-        print(plainUsers4);
+//        System.out.println("----- 自定义(sql注入) ------");
+//        List<User> plainUsers4 = userMapper.selectList(new QueryWrapper<User>()
+//                .apply("role_id = 2"));
+//        print(plainUsers4);
 
         UpdateWrapper<User> uw = new UpdateWrapper<>();
         uw.set("email", null);

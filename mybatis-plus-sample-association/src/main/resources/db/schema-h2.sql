@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS userq;
 
-CREATE TABLE user
+CREATE TABLE userq
 (
 	id 				BIGINT(20) NOT NULL 			COMMENT '主键ID',
 	company_id 		BIGINT(20) NOT NULL 			COMMENT '公司ID',

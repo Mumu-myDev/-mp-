@@ -1,4 +1,4 @@
-DELETE FROM user;
+DELETE FROM userq;
 DELETE FROM role;
 
 INSERT INTO role (id, role_name, role_describe)
